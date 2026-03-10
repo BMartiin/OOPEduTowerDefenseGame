@@ -8,9 +8,6 @@ public class Unit : BaseEntity
     [SerializeField] private float moveSpeed;
     private float originalMoveSpeed;
     private float moveDirection;
-    
-    //animation vars
-    private Animator animator;
 
     //combat vars
     [SerializeField] private float attackDamage;
@@ -20,6 +17,8 @@ public class Unit : BaseEntity
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         if (teamID == 0)
             moveDirection = 1.0f;
         else
@@ -28,8 +27,8 @@ public class Unit : BaseEntity
         //this var is needed so if the speed of the unit changes do to combat or something else we can change it back later to the original
         originalMoveSpeed = moveSpeed;
 
-        //for the animation
-        animator = GetComponent<Animator>();
+        //so the animation matches the attackspeed
+        animator.speed = attackSpeed;
     }
 
     // Update is called once per frame
@@ -81,25 +80,11 @@ public class Unit : BaseEntity
     //combat logic
     IEnumerator AttackRoutine()
     {
-        while(currentTarget != null)
+        while(currentTarget != null && !currentTarget.IsDead)
         {
             animator.SetBool("isAttacking", true);
 
-            //wait so the animation matches the damage
-            yield return new WaitForSeconds(0.2f);
-
-            //have to check if the enemy is alive again, because it can die while the unit is waiting
-            if(currentTarget != null)
-            {
-                currentTarget.TakeDamage(attackDamage);
-            }
-            else
-            {
-                break;
-            }
-            //attackSpeed can't be 0! 
-            yield return new WaitForSeconds(1 / attackSpeed);
-
+            yield return new WaitForSeconds(1.0f / attackSpeed);
         }
 
         //ending the attacking animation after the enemy is dead
@@ -107,4 +92,13 @@ public class Unit : BaseEntity
         moveSpeed = originalMoveSpeed;
         currentTarget = null; //just to be sure
     }
+
+    public void ExecuteHit()
+    {
+        if (currentTarget != null && !currentTarget.IsDead)
+        {
+            currentTarget.TakeDamage(attackDamage);
+        }
+    }
+
 }
