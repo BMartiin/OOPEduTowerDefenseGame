@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro; //need this for TextMeshPro things
 using System.Collections.Generic;
+using DynamicExpresso;
+using DynamicExpresso.Exceptions;
 
 public class CodingManager : MonoBehaviour
 {
@@ -15,7 +17,8 @@ public class CodingManager : MonoBehaviour
     public GameObject puzzlePanel;
     public TMP_Text taskDescriptionText;
     public TMP_InputField inputField;
-    public TMP_Text testStatusLabel;      
+    public TMP_Text testStatusLabel;
+    public int currentGoldCount = 0; //needed for later
 
     [Header("Adatok")]
     public List<QuestionData> questions;
@@ -25,11 +28,17 @@ public class CodingManager : MonoBehaviour
     private int currentQuestionIndex = 0;
     private bool canSpawn = false;
 
+    //for code int.
+    private Interpreter interpreter;
+
     private void Start()
     {
         Time.timeScale = 0.0f;
-
         puzzlePanel.SetActive(true);
+
+        interpreter = new Interpreter();
+
+        interpreter.SetFunction("lovag", new System.Action(SpawnKnight));
 
         SelectQuestion(0);
     }
@@ -44,7 +53,7 @@ public class CodingManager : MonoBehaviour
 
             inputField.text = "";
 
-            testStatusLabel.text = "Várakozás a kódra...";
+            testStatusLabel.text = "H/N";
             testStatusLabel.color = Color.white;
             canSpawn = false;
         }
@@ -52,34 +61,25 @@ public class CodingManager : MonoBehaviour
 
     public void CheckCode()
     {
-        string playerInput = inputField.text.Trim();
+        string playerInput = inputField.text;
 
-        bool isCorrect = false;
-
-        foreach (string answer in questions[currentQuestionIndex].Answers)
+        try
         {
-            if (playerInput == answer.Trim())
-            {
-                isCorrect = true;
-                break;
-            }
-        }
-
-        if (isCorrect)
-        {
-            testStatusLabel.text = "HELYES!";
+            interpreter.Eval(playerInput);
+            testStatusLabel.text = "SIKER!";
             testStatusLabel.color = Color.green;
+
             canSpawn = true;
         }
-        else
+        catch(ParseException ex)
         {
-            testStatusLabel.text = "HIBA!";
+            testStatusLabel.text = "HIBA: " + ex.Message;
             testStatusLabel.color = Color.red;
-            canSpawn = false;
         }
+
     }
 
-    public void StartBattle()
+    public void SpawnKnight()
     {
         if (canSpawn)
         {
@@ -88,9 +88,11 @@ public class CodingManager : MonoBehaviour
             Instantiate(knightPrefab, spawnPoint.position, rightRotation);
             Debug.Log("Knight Spawned");
         }
+    }
 
+    public void StartBattle()
+    {
         Time.timeScale = 1.0f;
-
         puzzlePanel.SetActive(false);
     }
 
