@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Enemy
+  - Tower
+  - Knight
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 1341882103
+    locked: 0
+  - name: Terrain
+    uniqueID: 2265966055
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: ground
+    uniqueID: 1841826603
+    locked: 0
+  - name: Tower
+    uniqueID: 2789842109
+    locked: 0
+  - name: Towerdetail
+    uniqueID: 1950964709
+    locked: 0
+  - name: characters
+    uniqueID: 1682453857
+    locked: 0
+  - name: CodingWindow
+    uniqueID: 157734967
+    locked: 0
+  m_RenderingLayers:
+  - Default
