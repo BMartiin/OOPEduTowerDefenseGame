@@ -539,11 +539,13 @@ MonoBehaviour:
   testStatusLabel: {fileID: 916392636}
   questions:
   - Description: "1. Feladat: \xCDrd be a lovag() parancsot, hogy sereget toborozz! "
-    Answers:
-    - lovag()
-    - semmi
-  - Description: 
-    Answers: []
+  - Description: "Id\xE9zz meg pontosan 3 lovagot egy for ciklus seg\xEDts\xE9g\xE9vel!"
+  - Description: "\xCDrj egy felt\xE9telt: ha az arany legal\xE1bb 100, akkor id\xE9zz
+      meg egy lovagot!"
+  - Description: "Id\xE9zz meg egy lovagot, de adj meg neki 10-es er\u0151t param\xE9terk\xE9nt:
+      lovag(10)"
+  - Description: "Hozz l\xE9tre egy sereg nev\u0171 v\xE1ltoz\xF3t 2-es \xE9rt\xE9kkel,
+      majd id\xE9zz meg ennyi lovagot egy ciklussal!"
   knightPrefab: {fileID: 3842302173413236717, guid: 235a97ce1654c4346a506c49c59fa569, type: 3}
   spawnPoint: {fileID: 2094301728}
 --- !u!1 &185909602
