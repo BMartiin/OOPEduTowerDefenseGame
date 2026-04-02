@@ -7,7 +7,7 @@ public abstract class BaseEntity : MonoBehaviour, IDamageable
     [SerializeField] protected float maxHealth; //SerializedField -> Hogy mutassa az inspectorban
     protected float currentHealth;
     [SerializeField]  protected byte teamID;
-    [SerializeField] protected Image healthFillImage;
+    [SerializeField] public Image healthFillImage;
 
     protected Animator animator;
 
@@ -56,7 +56,10 @@ public abstract class BaseEntity : MonoBehaviour, IDamageable
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             if (rb != null) rb.linearVelocity = Vector2.zero;
 
-            animator.SetBool("isAlive", false);
+            if(animator != null)
+            {
+                animator.SetBool("isAlive", false);
+            }
             Invoke(nameof(Die), 1f);
         }
     

@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using Jint;
 using System;
+using UnityEngine.UI;
 
 public class CodingManager : MonoBehaviour
 {
@@ -22,7 +23,16 @@ public class CodingManager : MonoBehaviour
     [Header("Adatok")]
     public List<QuestionData> questions;
     public GameObject knightPrefab;
-    public List<Transform> spawnPoints;
+    public GameObject enemyPrefab;
+    public GameObject healthBar;
+    public List<Transform> knightSpawnPoints;
+    public List<Transform> enemySpawnPoints;
+
+    [Header("Managers")]
+    public ScoreManager scoreManager;
+    public GameOverManager gameOverManager;
+    //private float battleStartTime;
+    //private List<Unit> spawnedKnights = new List<Unit>();
 
     private Engine engine;
     private int currentQuestionIndex = 0;
@@ -36,6 +46,7 @@ public class CodingManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         puzzlePanel.SetActive(true);
+        gameOverManager.panel.SetActive(false);
 
         RefreshAnswers();
         InitEngine();
@@ -135,8 +146,8 @@ public class CodingManager : MonoBehaviour
 
     public void StartBattle()
     {
-     
-        SpawnKnights();
+        SpawnEnemyWithHealthBar();
+        SpawnKnightsWithHealthBar();
         
         Time.timeScale = 1.0f;
         puzzlePanel.SetActive(false);
@@ -159,14 +170,61 @@ public class CodingManager : MonoBehaviour
         rightAnswers = new string[questions.Count];
     }
 
-    private void SpawnKnights()
+    public void EndGame(byte losingTeamID)
+    {
+        Time.timeScale = 0f;
+
+        int finalScore = scoreManager.CalculateFinalScore(goldCount);
+
+        NetworkManager netManager = UnityEngine.Object.FindFirstObjectByType<NetworkManager>();
+        if (netManager != null)
+        {
+            BattleResultData resultData = new BattleResultData
+            {
+                userId = netManager.editorTestUserId,
+                token = netManager.editorTestToken,
+                finalScore = finalScore
+            };
+            netManager.SendResultsMock(resultData);
+        }
+        else
+        {
+            Debug.LogWarning("Nincs network manager a pályán dilo");
+        }
+
+        string status = (losingTeamID == 0) ? "VESZTETTÉL!" : "GYÕZELEM!";
+        Color statusColor = (losingTeamID == 0) ? Color.red : Color.green;
+
+        gameOverManager.Setup(status, goldCount, finalScore, statusColor);
+    }
+
+    private void SpawnKnightsWithHealthBar()
     {
         for (int i = 0; i < goldCount; i++)
         {
-            if (i < spawnPoints.Count)
+            if (i < knightSpawnPoints.Count)
             {
-                Instantiate(knightPrefab, spawnPoints[i].position, Quaternion.Euler(0,180,0));
+                GameObject newKnight = Instantiate(knightPrefab, knightSpawnPoints[i].position, Quaternion.Euler(0,180,0));
+                Vector3 healthBarPosition = newKnight.transform.position + new Vector3(0, 1.4f, 0);
+                GameObject newBar = Instantiate(healthBar, healthBarPosition, Quaternion.identity);
+
+                newBar.transform.SetParent(newKnight.transform);
+
+                Unit unitScript = newKnight.GetComponent<Unit>();
+                unitScript.healthFillImage = newBar.transform.Find("Fill").GetComponent<Image>();
             }
         }
+    }
+
+    private void SpawnEnemyWithHealthBar()
+    {
+        GameObject newEnemy = Instantiate(enemyPrefab, enemySpawnPoints[0].position, Quaternion.identity);
+        Vector3 healthBarPosition = newEnemy.transform.position + new Vector3(0, 1.4f, 0);
+        GameObject newBar = Instantiate(healthBar, healthBarPosition, Quaternion.identity);
+
+        newBar.transform.SetParent(newEnemy.transform);
+
+        Unit unitScript = newEnemy.GetComponent<Unit>();
+        unitScript.healthFillImage = newBar.transform.Find("Fill").GetComponent<Image>();
     }
 }
