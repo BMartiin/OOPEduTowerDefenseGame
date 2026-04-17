@@ -1,16 +1,42 @@
 using UnityEngine;
+using UnityEngine.Networking;
+using System;
+using System.Collections;
+using System.Text;
 
 public class NetworkManager : MonoBehaviour
 {
-    [Header("Beta teszt adatok")]
+    [Header("Szerver beallitasok")]
+    public string serverUrl = "https://majdittlesz.com";
+
+    [Header("Teszt adatok")]
     public string editorTestUserId = "test_lazalaca_01";
-    public string editorTestToken = "dummy_token_123";
+    public string editorTestToken = "token_1";
 
-    public void SendResultsMock(BattleResultData data)
+    public void SendResults(BattleResultData data)
     {
-        //szép JSON generálása true paraméterrel
-        string jsonPayload = JsonUtility.ToJson(data, true);
+        StartCoroutine(PostRequestCoroutine(serverUrl + "/api/score", JsonUtility.ToJson(data)));
+    }
 
-        Debug.Log("<color=cyan><b>[NetworkManager] Adatcsomag elõkészítve küldésre:</b></color>\n" + jsonPayload);
+    private IEnumerator PostRequestCoroutine(string url, string json)
+    {
+        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+        {
+            byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Hiba a kuldes soran: " + request.error);
+            }
+            else
+            {
+                Debug.Log("Szerver valasza: " + request.downloadHandler.text);
+            }
+        }
     }
 }
