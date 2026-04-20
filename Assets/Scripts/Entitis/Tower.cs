@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : BaseEntity
 {
@@ -8,6 +9,16 @@ public class Tower : BaseEntity
     {
         base.Awake();
         codingManager = Object.FindFirstObjectByType<CodingManager>();
+    }
+
+    private void Start()
+    {
+        Transform fillTransform = transform.Find("HealthBarBackground/Fill") ?? transform.Find("HealthBarBackground(Clone)/Fill");
+
+        if (fillTransform != null)
+        {
+            healthFillImage = fillTransform.GetComponent<Image>();
+        }
     }
 
     public override void Die()

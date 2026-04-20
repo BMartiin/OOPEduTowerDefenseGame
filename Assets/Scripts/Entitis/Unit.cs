@@ -2,6 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+public enum AttackType
+{
+    Melee,
+    Ranged
+}
+
 public class Unit : BaseEntity
 {
     //movement vars
@@ -13,6 +19,10 @@ public class Unit : BaseEntity
     [SerializeField] private float attackDamage;
     [SerializeField] private float attackSpeed;
     [SerializeField] BaseEntity currentTarget;
+
+    [SerializeField] private AttackType unitAttackType;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectileSpawnPoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,12 +41,10 @@ public class Unit : BaseEntity
         animator.speed = attackSpeed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.right * Time.deltaTime * moveSpeed * moveDirection, Space.World);
 
-        //to set animation for walking
         if(moveSpeed > 0.0f)
         {
             animator.SetBool("isMoving", true);
@@ -63,6 +71,9 @@ public class Unit : BaseEntity
 
     private void CheckForCombat(Collider2D other)
     {
+        if (other is CircleCollider2D && other.isTrigger)
+            return;
+
         BaseEntity target = other.GetComponent<BaseEntity>();
 
         //teamID is needed so the Knight can indentify which tower is the enemies and i check move speed so the unit doesn't start to fight multiple enemies at once
@@ -97,7 +108,36 @@ public class Unit : BaseEntity
     {
         if (currentTarget != null && !currentTarget.IsDead)
         {
-            currentTarget.TakeDamage(attackDamage);
+            if(unitAttackType == AttackType.Melee)
+            {
+                currentTarget.TakeDamage(attackDamage);
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.swordSwing);
+                }
+            }
+            else if(unitAttackType == AttackType.Ranged)
+            {
+                ShootProjectile();
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.arrowShoot);
+                }
+            }
+        }
+    }
+
+    private void ShootProjectile()
+    {
+        if (projectilePrefab != null && projectileSpawnPoint != null)
+        {
+            GameObject proj = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+            Projectile projectileScript = proj.GetComponent<Projectile>();
+
+            if (projectileScript != null)
+            {
+                projectileScript.Initialize(currentTarget, attackDamage);
+            }
         }
     }
 

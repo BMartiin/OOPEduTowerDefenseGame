@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0273f6502ae3145b00dea872020ac0, type: 3}
+  m_Name: Level_3
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  LevelName: 
+  EnemyCount: 4
+  Questions:
+  - Description: "K\xE9sz\xEDts egy publikus, absztrakt Harcos oszt\xE1lyt! \xCDrj
+      bele egy absztrakt CsataKialtas() met\xF3dust!"
+    Theory: "L\xE1tom kitart\xF3 vagy ifj\xFA tan\xEDtv\xE1nyom! K\xE9szen \xE1llsz
+      a mai megm\xE9rettet\xE9sre? A seregben az \xE1ltal\xE1nos \"harcos\" fogalma
+      egy absztrakt koncepci\xF3, \xF6nmag\xE1ban nem l\xE9tezik a csatat\xE9ren,
+      csak konkr\xE9t \xEDj\xE1szk\xE9nt vagy lovagk\xE9nt. Ez\xE9rt a Harcos oszt\xE1lyt
+      abstract kulcssz\xF3val hozzuk l\xE9tre! Mivel minden harcosnak van csataki\xE1lt\xE1sa,
+      de mindenki\xE9 m\xE1s, maga a met\xF3dus is abstract lesz (kapcsos z\xE1r\xF3jelek
+      n\xE9lk\xFCli t\xF6rzzsel, pontosvessz\u0151vel lez\xE1rva). Ezzel a l\xE9p\xE9ssel
+      a programtervez\xE9s szintj\xE9n garant\xE1ljuk, hogy a j\xF6v\u0151ben senki
+      sem hozhat l\xE9tre \"n\xE9ma\" katon\xE1t. \xCDgy a lesz\xE1rmazottaknak k\xF6telez\u0151
+      lesz meg\xEDrniuk a saj\xE1t verzi\xF3jukat! Figyelj, hogy "
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: public\s+abstract\s+class\s+Harcos(.|\n)*public\s+abstract\s+void\s+CsataKialtas\s*\(\s*\)\s*;
+    RewardUnit: 1
+  - Description: "\xCDrj egy szerz\u0151d\xE9st IKikepzett n\xE9ven, ami egy visszat\xE9r\xE9si
+      \xE9rt\xE9k n\xE9lk\xFCli harcol\xE1s met\xF3dust (Harcol) \xEDr el\u0151!"
+    Theory: "Az interf\xE9sz egy szigor\xFA katonai szerz\u0151d\xE9s! Nem mondja
+      meg, hogyan kell harcolni, csak azt, hogy a kik\xE9pzett egys\xE9geknek az
+      k\xF6telez\u0151. Gondolj r\xE1 \xFAgy, mint egy oklev\xE9lre: aki megkapja,
+      arr\xF3l a program biztosan tudja, hogy k\xE9pes harcolni. A C#-ban az interf\xE9szek
+      nev\xE9t konvenci\xF3 szerint mindig nagy \"I\" bet\u0171vel kezdj\xFCk. Ne
+      feledd: az interf\xE9szben a met\xF3dusok alapb\xF3l publikusak \xE9s absztraktak,
+      \xEDgy nem kell el\xE9j\xFCk ki\xEDrni ezeket a kulcsszavakat, csak a visszat\xE9r\xE9si
+      t\xEDpust (ami most void) \xE9s a nevet!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: interface\s+IKikepzett\s*\{.*void\s+Harcol\s*\(\s*\)\s*;.*\}
+    RewardUnit: 1
+  - Description: "Hozd l\xE9tre a Hos oszt\xE1lyt! Legyen a Harcos lesz\xE1rmazottja,
+      \xE9s kapja meg a kik\xE9pzett min\u0151s\xEDt\xE9st is! Ut\xE1na val\xF3s\xEDtsd
+      meg benne mindk\xE9t meg\xF6r\xF6k\xF6lt feladatot!"
+    Theory: "Csin\xE1ljunk egy igazi h\u0151st! A C#-ban egy oszt\xE1lynak csak egyetlen
+      \u0151soszt\xE1lya lehet (a kett\u0151spont ut\xE1n ez \xE1ll az els\u0151
+      helyen), de emellett korl\xE1tlan sz\xE1m\xFA interf\xE9szt (szerz\u0151d\xE9st)
+      \xEDrhat al\xE1, amiket vessz\u0151vel sorolunk fel az \u0151s ut\xE1n (pl.
+      : Harcos, IKikepzett). Mivel a H\u0151s\xFCnk a Harcos \u0151st\u0151l sz\xE1rmazik
+      \xE9s al\xE1\xEDrta az IKikepzett szerz\u0151d\xE9st is, mindk\xE9t meg\xF6r\xF6k\xF6lt
+      met\xF3dust k\xF6telez\u0151 kidolgoznod benne! Az \u0151soszt\xE1ly absztrakt
+      met\xF3dus\xE1t az override kulcssz\xF3val, az interf\xE9sz met\xF3dus\xE1t
+      pedig sima public l\xE1that\xF3s\xE1ggal kell fel\xFCldefini\xE1lnod a blokkon
+      bel\xFCl."
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: class\s+Hos\s*:\s*Harcos\s*,\s*IKikepzett(.|\n)*override\s+void\s+CsataKialtas\s*\(\s*\)(.|\n)*public\s+void\s+Harcol\s*\(\s*\)
+    RewardUnit: 0
+  - Description: "K\xE9sz\xEDts egy publikus felsorol\xE1st Rang n\xE9ven! A lehets\xE9ges
+      kateg\xF3ri\xE1k sorrendben: Ujonc, Veteran, Elit."
+    Theory: "Szigor\xFA hierarchi\xE1ra van sz\xFCks\xE9g! Nem t\xE1rolhatjuk a katon\xE1k
+      rangj\xE1t sima sz\xF6vegk\xE9nt (stringk\xE9nt), mert ha valaki el\xEDr egy
+      bet\u0171t, vagy kisbet\u0171-nagybet\u0171 hib\xE1t v\xE9t, k\xE1osz lesz
+      a rendszerben. Az ENUM (felsorol\xE1s) egy el\u0151re defini\xE1lt, z\xE1rt
+      list\xE1t hoz l\xE9tre, amib\u0151l szigor\xFAan csak a megadott \xE9rt\xE9keket
+      lehet kiv\xE1lasztani. A h\xE1tt\xE9rben a g\xE9p ezeket az \xE9rt\xE9keket
+      automatikusan null\xE1t\xF3l kezd\u0151d\u0151 sz\xE1mokk\xE9nt kezeli, de
+      sz\xE1munkra a k\xF3dban emberi nyelven olvashat\xF3k maradnak. \xCDgy a rangsor
+      mindig k\u0151be lesz v\xE9sve!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: public\s+enum\s+Rang\s*\{\s*Ujonc\s*,\s*Veteran\s*,\s*Elit\s*\}
+    RewardUnit: 0
+  - Description: "V\xE9dd le a roham parancsot (Roham();) egy hibaelfog\xF3 szerkezettel!
+      Ha gond van, az ex nev\u0171, \xE1ltal\xE1nos hibaobjektum kapja el a probl\xE9m\xE1t!"
+    Theory: "A h\xE1bor\xFA kisz\xE1m\xEDthatatlan. B\xE1rmikor elt\xF6rhet egy kard,
+      ami a programodban egy v\xE1ratlan \"kiv\xE9telt\" (Exception) okoz. Ha ezt
+      nem kezeled, a program azonnal \xF6sszeomlik \xE9s bez\xE1r\xF3dik! A try blokkba
+      \xEDrjuk az eredeti haditervet, a catch blokkba pedig a v\xE9szforgat\xF3k\xF6nyvet,
+      ami param\xE9terk\xE9nt megkapja mag\xE1t a kiv\xE9telt is (Exception ex).
+      Ez a programoz\xF3k pajzsa: ahelyett, hogy a hiba elpuszt\xEDtan\xE1 a szoftvert,
+      csak bele\xFCtk\xF6zik a catch blokkba, \xE9s a k\xF3d fut\xE1sa biztons\xE1gosan
+      folytat\xF3dhat."
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: try\s*\{.*Roham\s*\(\s*\)\s*;.*\}\s*catch\s*\(\s*Exception\s+ex\s*\)
+    RewardUnit: 0

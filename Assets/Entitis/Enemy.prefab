@@ -317,9 +317,12 @@ MonoBehaviour:
   teamID: 1
   healthFillImage: {fileID: 0}
   moveSpeed: 1.15
-  attackDamage: 10
+  attackDamage: 6
   attackSpeed: 1.1
   currentTarget: {fileID: 0}
+  unitAttackType: 0
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
 --- !u!61 &858528354257255509
 BoxCollider2D:
   m_ObjectHideFlags: 0

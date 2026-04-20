@@ -165,6 +165,9 @@ MonoBehaviour:
   attackDamage: 5
   attackSpeed: 1.2
   currentTarget: {fileID: 0}
+  unitAttackType: 0
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
 --- !u!61 &541412996934721315
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0273f6502ae3145b00dea872020ac0, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  LevelName: Level_1
+  EnemyCount: 2
+  Questions:
+  - Description: "H\xEDvd meg a lovag(); f\xFCggv\xE9nyt, hogy harcba k\xFCldd az
+      els\u0151 katon\xE1dat! "
+    Theory: "\xDCdv\xF6z\xF6llek, ifj\xFA tan\xEDtv\xE1nyom! Ma nagy csat\xE1ba indulsz
+      az ellenf\xE9l tornya ellen! De miel\u0151tt a harc, elindulna van egy fontos
+      dolog, amit meg kell tenned! Sereget kell toboroznod! H\xEDvd h\xE1t vil\xE1gra
+      els\u0151 harcosodat a k\xF3dol\xE1s erej\xE9vel! Tipp: a lovagok a lovag()
+      f\xFCggv\xE9nyben v\xE1rakoznak, \xE9rdemes lehet megh\xEDvni egyet..."
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: 
+    RewardUnit: 0
+  - Description: "Id\xE9zz meg pontosan 3 lovagot egy for ciklus seg\xEDts\xE9g\xE9vel!"
+    Theory: "Sajnos a seregtoborz\xE1s nem olyan egyszer\u0171 feladat. Az elej\xE9n
+      a b\xE1trak magukt\xF3l jelentkeznek, de k\xE9s\u0151bb neked kell v\xE1logatnod
+      a harcosok k\xF6zt. Most, fiam, gener\xE1lj 3 lovagot, h\xE1tha lesz k\xF6zt\xFCk
+      egy, aki m\xE9lt\xF3 a feladatra! Tipp: figyeld a hold CIKLUS\xC1T d\xF6nt\xE9sed
+      meghozatal\xE1hoz, mivel az sok FORdulatot el\u0151rejelez."
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: for\s*\(
+    RewardUnit: 0
+  - Description: "Hozz l\xE9tre egy \xFCres oszt\xE1lyt Lovag n\xE9ven!"
+    Theory: "A toborz\xE1s sor\xE1n gyakran v\xE1ratlan probl\xE9m\xE1ba \xFCtk\xF6zhet
+      a tapasztalatlan hadvez\xE9r. Eddig \xFAgy h\xEDvhattad meg a lovag() f\xFCggv\xE9nyt,
+      mintha a v\xE1rosi barakkba szaladt\xE1l volna le katon\xE1kat keresni. Na,
+      de mi t\xF6rt\xE9nik, ha nincs v\xE1rosi barakk, hanem neked kell fel\xE9p\xEDtened
+      a helyet, ahol a harcosokat kikup\xE1lj\xE1k? Hozd h\xE1t l\xE9tre te a saj\xE1t
+      Lovag nev\u0171 oszt\xE1ylodat, ami majd onthatja a katon\xE1kat mag\xE1b\xF3l!
+      K\xF6zben ne felejtsd el milyen CLASS vagyok, hogy \xEDgy seg\xEDtek neked."
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: class\s+Lovag\s*\{
+    RewardUnit: 0
+  - Description: "Adj a Lovag oszt\xE1lynak egy publikus eg\xE9sz 'ero' mez\u0151t!"
+    Theory: "Az egy dolog, hogy elk\xE9sz\xFCl a barakk vagy \xE9ppen az oszt\xE1ly,
+      de a benne lakoz\xF3 harcosok r\xE1termetts\xE9g\xE9t m\xE9rni kell valahogy.
+      K\xE9sz\xEDts h\xE1t egy ero mez\u0151t, amivel pontosan egy sz\xE1m alapj\xE1n
+      m\xE9rni lehet a harcosok erej\xE9t. Csak a mez\u0151 k\xF3dj\xE1t \xEDrd le
+      \xE9s a l\xE1that\xF3s\xE1g legyen publikus, hadd l\xE1ssa az eg\xE9sz megye,
+      hogy milyen harcossal van dolguk. Az er\u0151 t\xEDpus\xE1nak meghat\xE1roz\xE1s\xE1n\xE1l
+      haszn\xE1ld az INTelligenci\xE1d.\r\n"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: public\s+int\s+ero\s*;
+    RewardUnit: 0
+  - Description: "Hozz l\xE9tre egy \xFAj Lovag objektumot l1 n\xE9ven!"
+    Theory: "Na most, hogy k\xE9sz a barakk terve, most m\xE1r meg is k\xE9ne val\xF3s\xEDtani,
+      hogy ne csak az elm\xE9nkben l\xE9tezzen, de a csatat\xE9ren is er\u0151t k\xE9pviseljen.
+      P\xE9ld\xE1nyos\xEDtsd h\xE1t oszt\xE1lyodat. Gondolkozz OBJEKT\xCDVan. Ne
+      f\xE9lj a NEW dolgokt\xF3l, ez a barakk pozit\xEDv v\xE1ltoz\xE1st hozhat!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: Lovag\s+l1\s*=\s*new\s+Lovag\s*\(\s*\)\s*;
+    RewardUnit: 0

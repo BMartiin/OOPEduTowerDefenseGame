@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0273f6502ae3145b00dea872020ac0, type: 3}
+  m_Name: Level_2
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  LevelName: Level_2
+  EnemyCount: 3
+  Questions:
+  - Description: "Hozz l\xE9tre 100 \xEDj\xE1szt egy ciklus seg\xEDts\xE9g\xE9vel!
+      A ciklus ut\xE1n h\xEDvj be egy 50-es erej\u0171, valamint egy 50-es erej\u0171
+      \xE9s 20-as tapasztalat\xFA \xEDj\xE1szt is!"
+    Theory: "\xDCdv\xF6z\xF6llek \xFAjra, ifj\xFA tan\xEDtv\xE1nyom! K\xE9szen \xE1llsz
+      egy \xFAj csat\xE1ra? A nagyobb tornyok megh\xF3d\xEDt\xE1s\xE1hoz bizony hatalmas
+      seregre van sz\xFCks\xE9g. B\xE1r te m\xE9g a tanul\xF3\xE9veidet t\xF6lt\xF6d,
+      nekem most nagyon j\xF3l j\xF6nne a seg\xEDts\xE9ged! Ha toborzol nekem 100
+      \xEDj\xE1szt, cser\xE9be megosztom veled a t\xE1vols\xE1gi harc titk\xE1t,
+      \xE9s adok egy harcost a te seregedbe is. Tipp: Haszn\xE1lj for vagy while
+      ciklust a 100 \xEDj\xE1sz l\xE9trehoz\xE1s\xE1hoz, \xE9s a bevet\xE9s\xFCkh\xF6z
+      az ijasz() parancsot haszn\xE1ld, mert egyes\xE9vel be\xEDrni \u0151ket gy\xF6trelmes
+      feladat lenne! Ha megvan a sereg, kellenek vezet\u0151k is az \xE9l\xFCkre!
+      A ciklus ut\xE1n gener\xE1lj egy 50-es erej\u0171 elit \xEDj\xE1szt, \xE9s
+      egy 50-es erej\u0171, 20-as tapasztalat\xFA legend\xE1s \xEDj\xE1szt is param\xE9terek
+      \xE1tad\xE1s\xE1val (a param\xE9terek sorrendje az ijasz h\xEDv\xE1sn\xE1l:
+      1. er\u0151, 2. tapasztalat). Na, t\xF6bb k\xE9r\xE9ssel m\xE1r nem is T\xDALTERHELLEK!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 102
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: (for|while).*\{.*ijasz\(\s*\)\s*;.*\}.*ijasz\(\s*50\s*\)\s*;.*ijasz\(\s*50\s*,\s*20\s*\)\s*;
+    RewardUnit: 1
+  - Description: "K\xE9sz\xEDts egy \xCDj\xE1sz oszt\xE1lyt, ami a Katon\xE1b\xF3l
+      sz\xE1rmazik! Legyen egy v\xE9dett l\u0151t\xE1v eg\xE9sz v\xE1ltoz\xF3ja,
+      \xE9s defini\xE1ld fel\xFCl a t\xE1mad\xE1s met\xF3dus\xE1t!"
+    Theory: "Tanoncom! Az el\u0151z\u0151 csat\xE1ban bizony\xEDtottad r\xE1termetts\xE9gedet.
+      Itt az id\u0151, hogy m\xE9lyebb szinten is meg\xE9rtsd, mi rejt\u0151zik egy
+      egyszer\u0171en megh\xEDvott katona sz\xEDve m\xE9ly\xE9n. A mi sereg\xFCnkben
+      minden harcos egy k\xF6z\xF6s Katona \u0151st\u0151l sz\xE1rmazik, de mindegyik\xFCknek
+      megvan a maga egyedi harcmodora. Itt az id\u0151, hogy te magad alkosd meg
+      az Ijasz oszt\xE1ly tervrajz\xE1t a k\xF3dok nyelv\xE9n, \xF6r\xF6k\xF6lve
+      az \u0151st\u0151l! Ne feledd: a l\u0151t\xE1vols\xE1g (lotav nev\u0171 eg\xE9sz,
+      azaz int v\xE1ltoz\xF3) hadititok, \xEDgy azt csak az \xEDj\xE1sz (\xE9s az
+      ut\xF3dai) l\xE1thatj\xE1k, amit a protected kulcssz\xF3val \xE9rhetsz el!
+      Emellett le kell cser\xE9lned a r\xE9gi, elavult k\xF6zelharci t\xE1mad\xE1st
+      (a Tamad() met\xF3dust) is a saj\xE1tjukra. Hiszek benne, hogy az override
+      kulcssz\xF3 seg\xEDts\xE9g\xE9vel sikerrel FEL\xDCLDEFINI\xC1LOD majd az elv\xE1r\xE1saimat!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: class\s+Ijasz\s*:\s*Katona.*protected\s+int\s+lotav\s*;.*public\s+override\s+void\s+Tamad\s*\(\s*\)
+    RewardUnit: 0
+  - Description: "Hozz l\xE9tre egy 15-\xF6s t\xE1vols\xE1got! Ha ez < 12, h\xEDvj
+      be egy lovagot, k\xFCl\xF6nben egy 10-es \xEDj\xE1szt!"
+    Theory: "Egyet mindig jegyezz meg, tan\xEDtv\xE1nyom: a harcban a helyzetfelismer\xE9s
+      \xE9letet menthet! Nem mindegy, mikor melyik egys\xE9get k\xFCldj\xFCk a csatat\xE9rre.
+      A programoz\xE1sban a d\xF6nt\xE9seket felt\xE9teles utas\xEDt\xE1sokkal (if
+      \xE9s else) hozzuk meg. Most a te feladatod felm\xE9rni a terepet! El\u0151sz\xF6r
+      hozz l\xE9tre egy eg\xE9sz t\xEDpus\xFA (int) tavolsag v\xE1ltoz\xF3t, \xE9s
+      \xE1ll\xEDtsd be 15-re. Ha az ellens\xE9g t\xFAl k\xF6zel \xE9rt hozz\xE1nk
+      (a t\xE1vols\xE1g < 12), azonnal be kell vetn\xFCnk egy p\xE1nc\xE9los lovagot
+      (a lovag() paranccsal) a k\xF6zelharchoz. Ha viszont m\xE9g messze j\xE1rnak
+      (else \xE1g), egy 10-es erej\u0171 elit \xEDj\xE1sz (az ijasz(10) megh\xEDv\xE1s\xE1val)
+      a t\xF6k\xE9letes v\xE1laszt\xE1s, hogy t\xE1volr\xF3l ritk\xEDtsa a soraikat!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 1
+    RequiredPower: 10
+    RequiredVarName: tavolsag
+    ExpectedVarValue: 15
+    RequiredRegexPattern: if\s*\(.*?\)(.|\n)*else
+    RewardUnit: 0
+  - Description: "\xCDrj egy publikus, csak olvashat\xF3 fegyver sz\xF6veget! A konstruktorban
+      add \xE1t a nevet az \u0151snek, a fegyver pedig legyen \"Hosszuij\"!"
+    Theory: "Egy igazi \xEDj\xE1sz sosem cser\xE9li le a kik\xE9pz\xE9skor kapott
+      fegyver\xE9t, az \xE9lete v\xE9g\xE9ig elk\xEDs\xE9ri! A programoz\xE1sban
+      ezt a szent esk\xFCt egy sz\xF6veges (string) t\xEDpus\xFA fegyver v\xE1ltoz\xF3n\xE1l
+      a public readonly (csak olvashat\xF3) kulcsszavakkal biztos\xEDtjuk. Az \xEDgy
+      megjel\xF6lt tulajdons\xE1goknak szigor\xFAan csakis a \"sz\xFClet\xE9s\xFCkkor\",
+      teh\xE1t az Ijasz(string nev) konstruktorban lehet \xE9rt\xE9ket adni (\"Hosszuij\"),
+      ut\xE1na soha t\xF6bb\xE9! Miel\u0151tt azonban az \xFAjonc megkapn\xE1 az
+      \xEDj\xE1t, hivatalosan is be kell jelentkeznie a seregbe. Ehhez a base(nev)
+      kulcssz\xF3val fel kell sz\xF3l\xEDtanunk az \u0151soszt\xE1lyt, hogy \u0151
+      is vegye fel a katon\xE1t a n\xE9vsorba. Tipp: Amikor a fegyvert a katona kez\xE9be
+      adod, a this kulcssz\xF3val egy\xE9rtelm\u0171s\xEDtsd a g\xE9p sz\xE1m\xE1ra,
+      hogy a saj\xE1t fegyver\xE9t \xE1ll\xEDtjuk be!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: readonly\s+string\s+fegyver\s*;.*Ijasz\s*\(\s*string\s+nev\s*\)\s*:\s*base\s*\(\s*nev\s*\).*fegyver\s*=\s*"Hosszuij"\s*;
+    RewardUnit: 0
+  - Description: "K\xE9sz\xEDts egy Kincstar oszt\xE1lyt! Defini\xE1lj benne egy
+      0.27-es \xE9rt\xE9k\u0171 konstans ad\xF3 m\xE9rt\xE9ket, \xE9s egy statikus
+      eg\xE9sz arany v\xE1ltoz\xF3t!"
+    Theory: "Tan\xEDtv\xE1nyom, egyet j\xF3l jegyezz meg: p\xE9nz n\xE9lk\xFCl sajnos
+      nincs h\xE1bor\xFA! Hozd l\xE9tre a Kincstar oszt\xE1lyt! A kir\xE1lys\xE1g
+      eddig k\xE1oszosan kezelte a zsoldot, de r\xE1j\xF6tt\xFCnk, hogy a sereg p\xE9nz\xFCgyeit
+      szigor\xFAan k\xF6zpontos\xEDtani kell. A programoz\xE1sban az ilyen \"k\xF6z\xF6s\"
+      vagyont (mint egy eg\xE9sz t\xEDpus\xFA arany v\xE1ltoz\xF3t), amib\u0151l
+      nincs minden katon\xE1nak saj\xE1tja, a static kulcssz\xF3val hozzuk l\xE9tre.
+      A megm\xE1s\xEDthatatlan birodalmi t\xF6rv\xE9nyeket \u2013 mint p\xE9ld\xE1ul
+      az ad\xF3 m\xE9rt\xE9k\xE9t, ami egy tizedest\xF6rt (double Ado = 0.27) \u2013
+      pedig konstansk\xE9nt (const) t\xE1roljuk, hiszen az k\u0151be van v\xE9sve,
+      \xE9s fut\xE1s k\xF6zben senki sem m\xF3dos\xEDthatja! \xC9p\xEDtsd meg a birodalom
+      kincst\xE1r\xE1t, \xE9s cser\xE9be egy h\u0171s\xE9ges lovag csatlakozik a
+      soraidhoz!"
+    RequiredKnightCount: 0
+    RequiredArcherCount: 0
+    RequiredPower: 0
+    RequiredVarName: 
+    ExpectedVarValue: 0
+    RequiredRegexPattern: class\s+Kincstar.*const\s+double\s+Ado\s*=\s*0\.27\s*;.*static\s+int\s+arany\s*;
+    RewardUnit: 0

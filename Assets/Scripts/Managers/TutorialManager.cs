@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
+
 public class TutorialManager : MonoBehaviour
 {
     [Header("TutorPanel")]
@@ -8,9 +10,9 @@ public class TutorialManager : MonoBehaviour
 
     [Header("UI dolgok")]
     public TMPro.TMP_Text bubbleText;
-
+    public GameObject backButton; 
     public Vector2 hiddenPosition = new Vector2(1300, 0);
-    public Vector2 visiblePosition = new Vector2(0,0);
+    public Vector2 visiblePosition = new Vector2(0, 0);
 
     private void Awake()
     {
@@ -18,19 +20,19 @@ public class TutorialManager : MonoBehaviour
         rectTransform.anchoredPosition = hiddenPosition;
     }
 
-
     public void SwimIn()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.tutorPop);
         StopAllCoroutines();
+        bubbleText.pageToDisplay = 1;
+        backButton.SetActive(false);
         StartCoroutine(MovePanel(visiblePosition));
-
     }
 
     public void SwimOut()
     {
         StopAllCoroutines();
         StartCoroutine(MovePanel(hiddenPosition));
-
     }
 
     private IEnumerator MovePanel(Vector2 targetPosition)
@@ -41,18 +43,46 @@ public class TutorialManager : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime/duration);
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime / duration);
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        rectTransform.anchoredPosition=targetPosition;
+        rectTransform.anchoredPosition = targetPosition;
     }
 
     public void ShowTutorial(string message)
     {
         bubbleText.text = message;
+        bubbleText.pageToDisplay = 1;
+        backButton.SetActive(false);
+
         SwimIn();
     }
 
+    public void OnOkButtonClicked()
+    {
+        if (bubbleText.pageToDisplay < bubbleText.textInfo.pageCount)
+        {
+            bubbleText.pageToDisplay++;
+            backButton.SetActive(true); 
+        }
+        else
+        {
+            SwimOut();
+        }
+    }
+
+    public void OnBackButtonClicked()
+    {
+        if (bubbleText.pageToDisplay > 1)
+        {
+            bubbleText.pageToDisplay--;
+        }
+        
+        if (bubbleText.pageToDisplay == 1)
+        {
+            backButton.SetActive(false);
+        }
+    }
 }
