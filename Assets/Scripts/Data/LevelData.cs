@@ -12,16 +12,21 @@ public enum UnitReward
 [Serializable]
 public struct QuestionData
 {
+    [Header("Feladat adatai")]
     public string Description;
     [TextArea(3, 10)]
     public string Theory;
+
+    [Header("Logika")]
     public int RequiredKnightCount;
     public int RequiredArcherCount;
     public int RequiredPower;
     public string RequiredVarName;
     public int ExpectedVarValue;
-    [Header("Regex C# Szintaktika")]
+
+    [Header("Regex - Szintaktika")]
     public string RequiredRegexPattern;
+
     [Header("Jutalom a feladatert")]
     public UnitReward RewardUnit;
 

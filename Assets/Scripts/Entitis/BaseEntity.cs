@@ -4,14 +4,18 @@ using UnityEngine.UI;
 
 public abstract class BaseEntity : MonoBehaviour, IDamageable
 {
-    [SerializeField] protected float maxHealth; //SerializedField -> Hogy mutassa az inspectorban
+    [SerializeField] //SerializedField -> Hogy mutassa az inspectorban
+    protected float maxHealth; 
     protected float currentHealth;
-    [SerializeField]  protected byte teamID;
-    [SerializeField] public Image healthFillImage;
+    
+    [SerializeField]  
+    protected byte teamID;
+    
+    [SerializeField] 
+    public Image healthFillImage;
 
     protected Animator animator;
 
-    //Property for var access
     public byte TeamID
     {
         get { return teamID; }
@@ -51,10 +55,16 @@ public abstract class BaseEntity : MonoBehaviour, IDamageable
             }
             //disable collision when the entity is ext. :)
             Collider2D col = GetComponent<Collider2D>();
-            if (col != null) col.enabled = false;
-
+            if (col != null)
+            {
+                col.enabled = false;
+            }
+            
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            if (rb != null) rb.linearVelocity = Vector2.zero;
+            if (rb != null) 
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
 
             if(animator != null)
             {

@@ -53,7 +53,7 @@ public class CodingManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Nem talalhato ilyen nevu szint a Resources/Levels mappaban: " + MenuManager.LevelToLoad);
+            Debug.LogError("Nincs ilyen nevu szint: " + MenuManager.LevelToLoad);
             return;
         }
 

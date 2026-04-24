@@ -22,7 +22,7 @@ MonoBehaviour:
       dolog, amit meg kell tenned! Sereget kell toboroznod! H\xEDvd h\xE1t vil\xE1gra
       els\u0151 harcosodat a k\xF3dol\xE1s erej\xE9vel! Tipp: a lovagok a lovag()
       f\xFCggv\xE9nyben v\xE1rakoznak, \xE9rdemes lehet megh\xEDvni egyet..."
-    RequiredKnightCount: 0
+    RequiredKnightCount: 1
     RequiredArcherCount: 0
     RequiredPower: 0
     RequiredVarName: 
@@ -35,7 +35,7 @@ MonoBehaviour:
       a harcosok k\xF6zt. Most, fiam, gener\xE1lj 3 lovagot, h\xE1tha lesz k\xF6zt\xFCk
       egy, aki m\xE9lt\xF3 a feladatra! Tipp: figyeld a hold CIKLUS\xC1T d\xF6nt\xE9sed
       meghozatal\xE1hoz, mivel az sok FORdulatot el\u0151rejelez."
-    RequiredKnightCount: 0
+    RequiredKnightCount: 3
     RequiredArcherCount: 0
     RequiredPower: 0
     RequiredVarName: 

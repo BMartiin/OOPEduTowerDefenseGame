@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
 
         float nextX = Mathf.MoveTowards(transform.position.x, targetPos.x, speed * Time.deltaTime);
 
-        float t = totalDist > 0 ? Mathf.Abs(nextX - startPos.x) / totalDist : 1f;
+        float t = totalDist > 0 ? Mathf.Abs(nextX - startPos.x) / totalDist : 1f; //fancy
 
         float arc = Mathf.Sin(t * Mathf.PI) * 1.5f;
         float nextY = Mathf.Lerp(startPos.y, targetPos.y, t) + arc;

@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
     [Header("UI Elemek")]
     public TMP_Text levelDisplayLabel;
 
-    public static string LevelToLoad = "Level_2";
+    public static string LevelToLoad = "Level_1";
 
     private void Start()
     {
@@ -57,10 +57,10 @@ public class MenuManager : MonoBehaviour
 
     private void LoadDefault()
     {
-        LevelToLoad = "Level_2";
+        LevelToLoad = "Level_1";
         if (levelDisplayLabel != null)
         {
-            levelDisplayLabel.text = "Szint 2";
+            levelDisplayLabel.text = "Szint 1";
         }
     }
 

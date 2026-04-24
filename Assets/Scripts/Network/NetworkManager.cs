@@ -54,7 +54,6 @@ public class NetworkManager : MonoBehaviour
     {
         string jsonPayload = JsonUtility.ToJson(data);
 
-        // EZT A SORT ADD HOZZÁ:
         Debug.Log($"SendResults meghívva! Cél URL: {serverUrl}/api/score | Küldött JSON: {jsonPayload}");
 
         StartCoroutine(PostRequestCoroutine(serverUrl + "/api/score", jsonPayload));
@@ -69,7 +68,7 @@ public class NetworkManager : MonoBehaviour
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
 
-            Debug.Log("UnityWebRequest elküldve a szerver felé...");
+            Debug.Log("UnityWebRequest elküldve a szerver felé");
 
             yield return request.SendWebRequest();
 

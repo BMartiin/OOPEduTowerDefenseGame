@@ -9,10 +9,12 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     {
         float bgmVol = PlayerPrefs.GetFloat("BGMVolume", 0.7f);
-        if (bgmVol <= 0.01f) bgmVol = 0.7f;
-
+        if (bgmVol <= 0.01f)
+            bgmVol = 0.7f;
+ 
         float sfxVol = PlayerPrefs.GetFloat("SFXVolume", 0.9f);
-        if (sfxVol <= 0.01f) sfxVol = 0.9f;
+        if (sfxVol <= 0.01f) 
+            sfxVol = 0.9f;
 
         if (bgmSlider != null)
             bgmSlider.SetValueWithoutNotify(bgmVol);
